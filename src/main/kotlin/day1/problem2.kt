@@ -8,6 +8,6 @@ fun similarityScore(left: List<Int>, right: List<Int>): Int {
 }
 
 fun main() {
-    val inputLists = readInput("src/main/kotlin/day1/inputProblem1.txt")
+    val inputLists = readInput("src/main/kotlin/day1/input.txt")
     println(similarityScore(inputLists[0], inputLists[1]))
 }
