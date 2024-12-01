@@ -1,7 +1,5 @@
 package day1
 
-import com.aoc24.day1.readInput
-
 fun similarityScore(left: List<Int>, right: List<Int>): Int {
     val rightIdCounts = right.groupingBy { it }.eachCount()
     return left.sumOf { it * (rightIdCounts[it] ?: 0) }
