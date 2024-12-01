@@ -2,7 +2,7 @@ package com.aoc24.day1
 
 fun similarityScore(left: List<Int>, right: List<Int>): Int {
     val rightIdCounts = right.groupingBy { it }.eachCount()
-    return left.sumOf<Int> { it * (rightIdCounts[it] ?: 0) }
+    return left.sumOf { it * (rightIdCounts[it] ?: 0) }
 }
 
 fun main() {
