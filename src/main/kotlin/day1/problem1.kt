@@ -1,5 +1,6 @@
-package com.aoc24.day1
+package day1
 
+import com.aoc24.day1.readInput
 import kotlin.math.abs
 
 
