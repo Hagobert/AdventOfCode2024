@@ -11,10 +11,10 @@ fun readInput(filename: String): List<List<Int>> {
 }
 
 
-fun analyzeLevelReports(levelReports: List<List<Int>>, problemDamperActive: Boolean): Int {
+fun analyzeLevelReports(levelReports: List<List<Int>>, isProblemDamperActive: Boolean): Int {
     return levelReports.count { levelReport ->
         val result = analyzeLevelReport(levelReport)
-        result.isValid || (problemDamperActive && result.candidatesToBeIgnored.any { analyzeLevelReport(levelReport.filterIndexed { i, _ -> i != it }).isValid })
+        result.isValid || (isProblemDamperActive && result.candidatesToBeIgnored.any { analyzeLevelReport(levelReport.filterIndexed { i, _ -> i != it }).isValid })
     }
 }
 
