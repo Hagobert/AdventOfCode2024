@@ -5,20 +5,20 @@ import java.io.File
 
 data class LevelReportResult(val isValid: Boolean, val candidatesToBeIgnored: Set<Int>)
 
-fun readInput(filename: String): List<List<Int>> {
-    return File(filename).readLines()
+private fun readInput(): List<List<Int>> {
+    return File("src/main/kotlin/day2/input.txt").readLines()
         .map { line -> line.split(" ").map { it.toInt() } }
 }
 
 
-fun analyzeLevelReports(levelReports: List<List<Int>>, isProblemDamperActive: Boolean): Int {
+private fun analyzeLevelReports(levelReports: List<List<Int>>, isProblemDamperActive: Boolean): Int {
     return levelReports.count { levelReport ->
         val result = analyzeLevelReport(levelReport)
         result.isValid || (isProblemDamperActive && result.candidatesToBeIgnored.any { analyzeLevelReport(levelReport.filterIndexed { i, _ -> i != it }).isValid })
     }
 }
 
-fun analyzeLevelReport(levelReport: List<Int>): LevelReportResult {
+private fun analyzeLevelReport(levelReport: List<Int>): LevelReportResult {
     val initialDifference = levelReport[1] - levelReport[0]
     val initialSlope = initialDifference > 0
     if (initialDifference !in -3..3 || initialDifference == 0) return LevelReportResult(false, setOf(0, 1))
@@ -35,7 +35,7 @@ fun analyzeLevelReport(levelReport: List<Int>): LevelReportResult {
 
 
 fun main() {
-    val inputLists = readInput("src/main/kotlin/day2/input.txt")
-    println("Answer to problem 1: ${analyzeLevelReports(inputLists, false)}")
-    println("Answer to problem 2: ${analyzeLevelReports(inputLists, true)}")
+    val inputLists = readInput()
+    println("Answer to day 2 problem 1: ${analyzeLevelReports(inputLists, false)}")
+    println("Answer to day 2 problem 2: ${analyzeLevelReports(inputLists, true)}")
 }
